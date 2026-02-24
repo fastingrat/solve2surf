@@ -1,0 +1,13 @@
+{
+  "admin/services/solve2surf": {
+    "title": "Solve2Surf",
+    "action": {
+      "type": "view",
+      "path": "solve2surf"
+    },
+    "depends": {
+      "acl": [ "luci-app-solve2surf" ],
+      "uci": { "solve2surf": true }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+name: Build and Publish OpenWrt Packages
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Build with Official OpenWrt SDK Action
+        uses: openwrt/gh-action-sdk@v7
+        env:
+          ARCH: mipsel_24kc
+          FEEDNAME: custom
+          PACKAGES: solve2surf luci-app-solve2surf
+          INDEX: 1
+          CONFIG_SIGNED_PACKAGES: ""
+          V: s
+
+      - name: Move created packages to project dir
+        run: |
+          mkdir -p release_packages
+          find bin/packages/ -name "*.apk" -exec cp {} release_packages/ \;
+          find bin/packages/ -type f ! -name "*.apk" -exec cp {} release_packages/ \;
+
+      - name: Upload Package Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: solve2surf-openwrt-packages-all
+          path: release_packages/*
+          retention-days: 1
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: solve2surf-openwrt-packages-all
+          path: public/packages/solve2surf
+
+      - name: Generate Multi-Architecture Repository
+        run: |
+          # The native unsigned packages.adb is generated automatically because INDEX: 1 was passed
+          
+          cd ${GITHUB_WORKSPACE}
+          
+          mkdir -p public/mipsel_24kc public/aarch64_generic public/x86_64 public/ramips_mt7621 public/arm_cortex-a7_neon-vfpv4 public/arm_cortex-a15_neon-vfpv4 public/mips_24kc public/ath79_generic public/mediatek_filogic
+          
+          # Deploy ONLY the universal APKINDEX and apks
+          for arch in mipsel_24kc aarch64_generic x86_64 ramips_mt7621 arm_cortex-a7_neon-vfpv4 arm_cortex-a15_neon-vfpv4 mips_24kc ath79_generic mediatek_filogic; do
+            cp public/packages/solve2surf/*.apk public/$arch/
+            cp public/packages/solve2surf/packages.adb public/$arch/ 2>/dev/null || true
+            cp public/packages/solve2surf/Packages* public/$arch/ 2>/dev/null || true
+          done
+          
+      - name: Create index.html
+        run: |
+          cat << 'HTMLEOF' > public/index.html
+          <!DOCTYPE html><html><body>
+          <h1>Solve2Surf OpenWrt Repository</h1>
+          <p>This repository supports multiple OpenWrt architectures (mipsel, aarch64, ramips, x86_64, etc).</p>
+          <p>To install these architecture-independent packages in OpenWrt 25.12+ (APK), run the following on your router:</p>
+          <pre>
+          . /etc/os-release
+          echo "https://fastingrat.github.io/solve2surf/$OPENWRT_ARCH/packages.adb" >> /etc/apk/repositories.d/custom.list
+          apk update
+          apk add --allow-untrusted solve2surf luci-app-solve2surf
+          </pre>
+          </body></html>
+          HTMLEOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

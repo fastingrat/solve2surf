@@ -1,0 +1,9 @@
+package solve2surf
+
+config global 'main'
+	option enabled '0'
+	option interface 'lan'
+	option storage_url 'https://path-to-object-store/problems.json'
+	option duration '60'
+	option grading_api 'https://api.grader.dev/grade'
+	option fas_key 'Solve2SurfKey'

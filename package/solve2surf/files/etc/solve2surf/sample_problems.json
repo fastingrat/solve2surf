@@ -1,0 +1,177 @@
+[
+    {
+        "id": "q_001",
+        "type": "local",
+        "question": "What is the capital of France?",
+        "expected_answer": "Paris",
+        "duration_minutes": 120
+    },
+    {
+        "id": "q_002",
+        "type": "local",
+        "question": "If you flip a coin 3 times, how many possible outcomes are there?",
+        "expected_answer": "8",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_003",
+        "type": "local",
+        "question": "Which constant is the ratio of a circle's circumference to its diameter?",
+        "expected_answer": "pi",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_004",
+        "type": "local",
+        "question": "What is the logical equivalent of NOT (A AND B) according to De Morgan's laws? (a) NOT A AND NOT B, (b) NOT A OR NOT B",
+        "expected_answer": "b",
+        "duration_minutes": 180
+    },
+    {
+        "id": "q_005",
+        "type": "local",
+        "question": "If all A are B, and all B are C, are all A necessarily C? (yes/no)",
+        "expected_answer": "yes",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_006",
+        "type": "local",
+        "question": "What gas do plants primarily absorb from the atmosphere for photosynthesis?",
+        "expected_answer": "carbon dioxide",
+        "duration_minutes": 120
+    },
+    {
+        "id": "q_007",
+        "type": "local",
+        "question": "What is the next number in the sequence: 2, 4, 8, 16, ...",
+        "expected_answer": "32",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_008",
+        "type": "local",
+        "question": "In computer science, what does RAM stand for?",
+        "expected_answer": "random access memory",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_009",
+        "type": "local",
+        "question": "If a train travels 120 miles in 2 hours, what is its average speed in mph?",
+        "expected_answer": "60",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_010",
+        "type": "local",
+        "question": "True or False: A prime number is only divisible by 1 and itself.",
+        "expected_answer": "true",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_011",
+        "type": "local",
+        "question": "What is the common name for dihydrogen monoxide?",
+        "expected_answer": "water",
+        "duration_minutes": 120
+    },
+    {
+        "id": "q_012",
+        "type": "local",
+        "question": "If x + 5 = 12, what is x?",
+        "expected_answer": "7",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_013",
+        "type": "local",
+        "question": "What is the primary language used to style web pages?",
+        "expected_answer": "css",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_014",
+        "type": "local",
+        "question": "How many bits are in a byte?",
+        "expected_answer": "8",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_015",
+        "type": "local",
+        "question": "What protocol is used to securely browse the web?",
+        "expected_answer": "https",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_016",
+        "type": "local",
+        "question": "Which planet is known as the Red Planet?",
+        "expected_answer": "mars",
+        "duration_minutes": 120
+    },
+    {
+        "id": "q_017",
+        "type": "local",
+        "question": "If you throw a ball horizontally and drop one vertically at the same time, assuming no air resistance, which hits the ground first? (horizontal/vertical/same)",
+        "expected_answer": "same",
+        "duration_minutes": 180
+    },
+    {
+        "id": "q_018",
+        "type": "local",
+        "question": "What is the boolean result of (True XOR True)?",
+        "expected_answer": "false",
+        "duration_minutes": 90
+    },
+    {
+        "id": "q_019",
+        "type": "local",
+        "question": "Who was the first programmer? (Ada ...)",
+        "expected_answer": "lovelace",
+        "duration_minutes": 120
+    },
+    {
+        "id": "q_020",
+        "type": "local",
+        "question": "Is the number zero considered even or odd?",
+        "expected_answer": "even",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_021",
+        "type": "local",
+        "question": "What is the square root of 144?",
+        "expected_answer": "12",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_022",
+        "type": "local",
+        "question": "If a shirt costs $20 and is discounted by 25%, what is the final price?",
+        "expected_answer": "15",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_023",
+        "type": "local",
+        "question": "What does CPU stand for?",
+        "expected_answer": "central processing unit",
+        "duration_minutes": 60
+    },
+    {
+        "id": "q_024",
+        "type": "local",
+        "question": "In logic, what is a statement that is always true called?",
+        "expected_answer": "tautology",
+        "duration_minutes": 180
+    },
+    {
+        "id": "q_025",
+        "type": "local",
+        "question": "What is the acronym for the system that translates domain names to IP addresses?",
+        "expected_answer": "dns",
+        "duration_minutes": 60
+    }
+]

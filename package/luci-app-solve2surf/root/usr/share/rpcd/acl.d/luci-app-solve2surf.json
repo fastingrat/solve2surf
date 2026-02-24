@@ -1,0 +1,14 @@
+{
+  "luci-app-solve2surf": {
+    "description": "Grant access to the solve2surf configuration",
+    "read": {
+      "uci": [ "solve2surf" ],
+      "ubus": {
+        "network.interface": [ "dump" ]
+      }
+    },
+    "write": {
+      "uci": [ "solve2surf" ]
+    }
+  }
+}
